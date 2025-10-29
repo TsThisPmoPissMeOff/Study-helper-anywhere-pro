@@ -1,1 +1,16 @@
+version: "3.8"
+
+services:
+  webtop:
+    image: lscr.io/linuxserver/webtop:latest
+    container_name: webtop
+    environment:
+      - PUID=1000          # Change if needed (user ID inside container)
+      - PGID=1000          # Change if needed (group ID inside container)
+      - TZ=Etc/UTC         # Set your timezone
+    ports:
+      - "8080:3000"        # Host port 8080 maps to container port 3000
+    volumes:
+      - ./config:/config   # Persistent config/data folder
+    restart: unless-stopped
 
